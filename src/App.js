@@ -1,11 +1,12 @@
-import React, { useEffect, useState , useCallback} from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import SquareItem from "./components/SquareItem";
 
 function App() {
     const [ option, setOption ] = useState('Pick mode');
     const [ field, setField ] = useState("0");
     const [ level, setLevel ] = useState([]);
-    const [ activeSquare, setActiveSquare ] = useState('');
+    const [ activeSquare, setActiveSquare ] = useState(false);
 
 
     useEffect(() => {
@@ -23,16 +24,6 @@ function App() {
             });
         },
         []);
-
-    const SquareItem = ({ id }) => (
-                <div
-                    onMouseEnter={useCallback((e) => {
-                        e.target.classList.toggle("active");
-                    }, [id])}
-                    className="squares-list__item"
-                    id={id}>
-                </div>
-    )
 
     const handleChange = (event) => {
         setOption(event.target.value);
