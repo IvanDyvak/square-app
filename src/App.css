@@ -1,0 +1,38 @@
+.App {
+  width: 100%;
+  max-width: 1150px;
+  margin: 0 auto;
+  box-sizing: border-box;
+  text-align: center;
+}
+.App-logo{
+  max-width: 300px;
+  margin: 20px auto;
+}
+.init-btn{
+  width: 80px;
+  margin: 0 10px;
+  background: blueviolet;
+  color: #fff;
+  text-transform: uppercase;
+  border-radius: 5px;
+  border: none;
+  padding: 4px 0;
+}
+.squares-list{
+  width: 100%;
+  max-width: 300px;
+  margin-top: 50px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.squares-list__item{
+  display: block;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #000;
+}
+.active{
+  background: blue;
+}
