@@ -3,17 +3,18 @@ import './App.css';
 import SquareItem from "./components/SquareItem";
 
 function App() {
-    const [ option, setOption ] = useState('Pick mode');
-    const [ field, setField ] = useState("0");
+    const [ option, setOption ] = useState('');
+    const [ field, setField ] = useState(0);
     const [ level, setLevel ] = useState([]);
     const [ activeSquare, setActiveSquare ] = useState(false);
-
 
     useEffect(() => {
 
         fetch(`https://demo7919674.mockable.io`)
             .then((response) => response.json())
             .then((response) => {
+                const firstOption = [{name: "Pick mode", field: 0}];
+                response = [...firstOption, ...response];
                 console.log(response);
                 setLevel(response);
             })
@@ -27,14 +28,13 @@ function App() {
 
     const handleChange = (event) => {
         setOption(event.target.value);
-        setField(event.target.id);
-        console.log(field);
     }
-    console.log(document.querySelectorAll('option')[0]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // console.log(option, field);
+        const selectOptions = document.getElementById("modeLevels");
+        let modeId = Number(selectOptions.options[selectOptions.selectedIndex].id);
+        setField(modeId);
     }
 
   return (
@@ -44,8 +44,7 @@ function App() {
       </header>
         <form onSubmit={handleSubmit}>
             <label>
-                <select value="Pick mode" onChange={handleChange}>
-                    <option value={option} id={field}>{option}</option>
+                <select id="modeLevels" value={option} onChange={handleChange}>
                     {level.map(({name, field}) =>
                         <option value={name} key={name} id={field}>{name}</option>
                     )}
@@ -53,14 +52,16 @@ function App() {
             </label>
             <input type="submit" value="Start" className="init-btn"/>
         </form>
-        <h2>Id: {field}</h2>
         <div className="squares-list">
-            {[...Array(15).keys()].map((num) =>
+            { field !== 0 ?
+                [...Array(field*field).keys()].map((num) =>
                 <SquareItem
                     key={num} id={num}
                     onMouseEnter={setActiveSquare}
                     isActive={activeSquare} />
-            )}
+            ) :
+               null
+            }
         </div>
     </div>
   );

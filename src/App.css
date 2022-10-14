@@ -21,8 +21,8 @@
 }
 .squares-list{
   width: 100%;
-  max-width: 300px;
-  margin-top: 50px;
+  max-width: 90%;
+  margin: 50px auto;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
