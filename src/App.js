@@ -53,7 +53,7 @@ function App() {
             </label>
             <input type="submit" value="Start" className="init-btn"/>
         </form>
-        <h2>{field}</h2>
+        <h2>Id: {field}</h2>
         <div className="squares-list">
             {[...Array(15).keys()].map((num) =>
                 <SquareItem

@@ -7,9 +7,9 @@ function SquareItem ({ id, isActive }) {
         <div
             onMouseEnter={useCallback((e) => {
                 e.target.classList.toggle("active");
-                isActive = !isActive;
             }, [isActive])}
-            className="squares-list__item" id={id}>
+            className="squares-list__item"
+            id={id}>
         </div>
     );
 }
