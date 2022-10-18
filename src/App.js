@@ -9,7 +9,7 @@ function App() {
     const [ option, setOption ] = useState('');
     const [ field, setField ] = useState(0);
     const [ level, setLevel ] = useState([]);
-    const { colId } = useAppData();
+    const { colId, rowId } = useAppData();
 
     useEffect(() => {
 
@@ -76,7 +76,7 @@ function App() {
                 <div className="hovered-items-info-wrap">
                     <h2>Hovered squares</h2>
                     <div className="hovered-items-info">
-                        <span>row </span>
+                        <span>row {rowId}</span>
                         <span>col {colId}</span>
                     </div>
                 </div>
