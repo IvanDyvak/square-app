@@ -26,12 +26,14 @@
 }
 .wrapper{
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
+  padding: 10px;
+  flex-direction: column-reverse;
 }
 .squares-list{
   width: 100%;
-  max-width: 80%;
+  /*max-width: 80%;*/
   margin: 50px auto;
   display: block;
 }
@@ -39,10 +41,10 @@
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 .hovered-items-info-wrap{
   width: 100%;
-  max-width: 20%;
 }
 .hovered-items-info{
   display: flex;
@@ -52,6 +54,9 @@
   padding: 4px;
   color: #000;
   background: lightgreen;
+  width: 50%;
+  max-width: 210px;
+  margin: auto;
 }
 .hovered-items-info>span{
   margin-right: 20px;

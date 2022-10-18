@@ -9,28 +9,23 @@ function App() {
     const [ option, setOption ] = useState('');
     const [ field, setField ] = useState(0);
     const [ level, setLevel ] = useState([]);
-    const { colId, rowId } = useAppData();
+    const { colId, rowId, data, isDataLoading, setIsActiveSquare } = useAppData();
+    const [ list, setList ] = useState('');
+
+
+
 
     useEffect(() => {
+            const firstOption = [{name: "Pick mode", field: 0}];
+            setLevel([...firstOption, ...data]);
 
-        fetch(`https://demo7919674.mockable.io`)
-            .then((response) => response.json())
-            .then((response) => {
-                const firstOption = [{name: "Pick mode", field: 0}];
-                const data = [...firstOption, ...response];
-                console.log(data);
-                // if(!data.length) return <div>Sorry, there's no info</div>
-
-                setLevel(data);
-
-            })
-
-            .catch((error) => {
-                console.error('Error:', error);
-                setLevel(0);
-            });
         },
-        []);
+        [data]);
+
+    if(isDataLoading) return <div style={{textAlign: "center",marginTop: "50px",fontWeight: "600"}}>Loading...</div>
+
+
+    if(!data.length) return <div style={{textAlign: "center",marginTop: "50px",fontWeight: "600"}}>Sorry, there's no info</div>
 
     const handleChange = (event) => {
         setOption(event.target.value);
@@ -41,6 +36,8 @@ function App() {
         const selectOptions = document.getElementById("modeLevels");
         let modeId = Number(selectOptions.options[selectOptions.selectedIndex].id);
         setField(modeId);
+        setIsActiveSquare(false);
+
     }
 
     return (
@@ -64,9 +61,9 @@ function App() {
                             <div className="row-items" key={num} id={num}>
                                 {
                                     [...Array(field).keys()].map((num) =>
-                                        <SquareItem
-                                            key={num} id={num}
-                                        />
+                                            <SquareItem
+                                                key={num} id={num}
+                                            />
                                     )
                                 }
                             </div>
