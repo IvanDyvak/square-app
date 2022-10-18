@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
+import Header from "./components/Header";
 import SquareItem from "./components/SquareItem";
+import { useAppData } from "./context/user-hooks";
+
 
 function App() {
     const [ option, setOption ] = useState('');
     const [ field, setField ] = useState(0);
     const [ level, setLevel ] = useState([]);
-    const [ activeSquare, setActiveSquare ] = useState(false);
+    const { colId } = useAppData();
 
     useEffect(() => {
 
@@ -14,14 +17,17 @@ function App() {
             .then((response) => response.json())
             .then((response) => {
                 const firstOption = [{name: "Pick mode", field: 0}];
-                response = [...firstOption, ...response];
-                console.log(response);
-                setLevel(response);
+                const data = [...firstOption, ...response];
+                console.log(data);
+                // if(!data.length) return <div>Sorry, there's no info</div>
+
+                setLevel(data);
+
             })
 
             .catch((error) => {
                 console.error('Error:', error);
-                setLevel(error);
+                setLevel(0);
             });
         },
         []);
@@ -37,33 +43,45 @@ function App() {
         setField(modeId);
     }
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src="/images/logo.png" className="App-logo" alt="logo" />
-      </header>
-        <form onSubmit={handleSubmit}>
-            <label>
-                <select id="modeLevels" value={option} onChange={handleChange}>
-                    {level.map(({name, field}) =>
-                        <option value={name} key={name} id={field}>{name}</option>
-                    )}
-                </select>
-            </label>
-            <input type="submit" value="Start" className="init-btn"/>
-        </form>
-        <div className="squares-list">
-            { field !== 0 ?
-                [...Array(field*field).keys()].map((num) =>
-                <SquareItem
-                    key={num} id={num}
-                    onMouseEnter={setActiveSquare}
-                    isActive={activeSquare} />
-            ) :
-               null
-            }
+    return (
+        <div className="App">
+            <Header />
+            <form onSubmit={handleSubmit}>
+                <label>
+                    <select id="modeLevels" value={option} onChange={handleChange}>
+                        {level.map(({name, field}) =>
+                            <option value={name} key={name} id={field}>{name}</option>
+                        )}
+                    </select>
+                </label>
+                <input type="submit" value="Start" className="init-btn"/>
+            </form>
+            <div className="wrapper">
+                <div className="squares-list">
+                    {
+                        [...Array(field).keys()].map((num) =>
+
+                            <div className="row-items" key={num} id={num}>
+                                {
+                                    [...Array(field).keys()].map((num) =>
+                                        <SquareItem
+                                            key={num} id={num}
+                                        />
+                                    )
+                                }
+                            </div>
+                        )
+                    }
+                </div>
+                <div className="hovered-items-info-wrap">
+                    <h2>Hovered squares</h2>
+                    <div className="hovered-items-info">
+                        <span>row </span>
+                        <span>col {colId}</span>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
   );
 }
 export default App;

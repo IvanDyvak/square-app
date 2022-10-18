@@ -1,15 +1,17 @@
-import React, { useCallback } from 'react';
+import React, {useState} from 'react';
 import './SquareItem.css';
+import { useAppData } from '../context/user-hooks';
 
-function SquareItem ({ id, isActive }) {
+
+function SquareItem ({id}) {
+    const { isActiveSquare, activeToggle } = useAppData();
+
 
     return(
         <div
-            onMouseEnter={useCallback((e) => {
-                e.target.classList.toggle("active");
-            }, [isActive])}
-            className="squares-list__item"
-            id={id}>
+            onMouseEnter={activeToggle}
+            className={`squares-list__item ${isActiveSquare ? 'active' : ''}` }
+        id={id}>
         </div>
     );
 }
