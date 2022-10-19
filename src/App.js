@@ -10,9 +10,10 @@ function App() {
     const [ field, setField ] = useState(0);
     const [ level, setLevel ] = useState([]);
     const { colId, rowId, data, isDataLoading, setIsActiveSquare } = useAppData();
-    const [ list, setList ] = useState('');
-
-
+    // const [ key, setKey ] = useState(0);
+    //
+    //
+    // setKey(key+1);
 
 
     useEffect(() => {
@@ -54,6 +55,22 @@ function App() {
                 <input type="submit" value="Start" className="init-btn"/>
             </form>
             <div className="wrapper">
+                {/*{*/}
+                {/*    [...Array(field).keys()].map((num) =>*/}
+                {/*<div className="squares-list" style={{display: "grid", gridTemplateColumns:*/}
+                {/*    "repeat(5, minmax(10px, 1fr))", gridTemplateRows:*/}
+                {/*    "repeat(5, minmax(10px, 1fr))"}}>*/}
+                {/*                    {*/}
+                {/*                        [...Array(field).keys()].map((num) =>*/}
+                {/*                                <SquareItem*/}
+                {/*                                    key={num} id={num}*/}
+                {/*                                />*/}
+                {/*                        )*/}
+                {/*                    }*/}
+                {/*</div>*/}
+                {/*    )*/}
+                {/*}*/}
+
                 <div className="squares-list">
                     {
                         [...Array(field).keys()].map((num) =>
