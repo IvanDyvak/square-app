@@ -7,8 +7,8 @@ export const useAppData = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
     const [ isActiveSquare, setIsActiveSquare ] = useState(false);
-    const [colId, setColdId] = useState(0);
-    const [rowId, setRowdId] = useState(0);
+    const [rowId, setRowdId] = useState("");
+    const [colId, setColdId] = useState("");
     const [error, setError] = useState(null);
     const [isDataLoading, setDataLoading] = useState(false);
     const [data, setData] = useState([]);
@@ -33,9 +33,6 @@ export const AppProvider = ({ children }) => {
         //     setRowdId(Number(e.target.parentNode.id) + 1);
         //     console.log(colId);
         // }
-
-
-
 
   return (
     <AppContext.Provider

@@ -9,11 +9,8 @@ function App() {
     const [ option, setOption ] = useState('');
     const [ field, setField ] = useState(0);
     const [ level, setLevel ] = useState([]);
-    const { colId, rowId, data, isDataLoading, setIsActiveSquare } = useAppData();
-    // const [ key, setKey ] = useState(0);
-    //
-    //
-    // setKey(key+1);
+    const { data, isDataLoading, setIsActiveSquare, rowId, colId } = useAppData();
+
 
 
     useEffect(() => {
@@ -38,7 +35,6 @@ function App() {
         let modeId = Number(selectOptions.options[selectOptions.selectedIndex].id);
         setField(modeId);
         setIsActiveSquare(false);
-
     }
 
     return (
@@ -55,35 +51,25 @@ function App() {
                 <input type="submit" value="Start" className="init-btn"/>
             </form>
             <div className="wrapper">
-                {/*{*/}
-                {/*    [...Array(field).keys()].map((num) =>*/}
-                {/*<div className="squares-list" style={{display: "grid", gridTemplateColumns:*/}
-                {/*    "repeat(5, minmax(10px, 1fr))", gridTemplateRows:*/}
-                {/*    "repeat(5, minmax(10px, 1fr))"}}>*/}
-                {/*                    {*/}
-                {/*                        [...Array(field).keys()].map((num) =>*/}
-                {/*                                <SquareItem*/}
-                {/*                                    key={num} id={num}*/}
-                {/*                                />*/}
-                {/*                        )*/}
-                {/*                    }*/}
-                {/*</div>*/}
-                {/*    )*/}
-                {/*}*/}
 
                 <div className="squares-list">
                     {
                         [...Array(field).keys()].map((num) =>
-
-                            <div className="row-items" key={num} id={num}>
-                                {
-                                    [...Array(field).keys()].map((num) =>
+                        {
+                            let rowNumber = num+1;
+                            return(
+                                <div className="row-items" key={num} id={rowNumber}>
+                                    {
+                                        [...Array(field).keys()].map((num) =>
                                             <SquareItem
-                                                key={num} id={num}
+                                                key={num} id={rowNumber+"-"+(num+1)}
                                             />
-                                    )
-                                }
-                            </div>
+                                        )
+                                    }
+                                </div>
+                            )
+                        }
+
                         )
                     }
                 </div>
