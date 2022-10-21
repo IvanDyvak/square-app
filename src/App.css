@@ -37,12 +37,6 @@
   margin: 50px auto;
   display: block;
 }
-.row-items{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 .hovered-items-info-wrap{
   width: 100%;
 }

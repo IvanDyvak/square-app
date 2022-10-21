@@ -1,16 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import Header from "./components/Header";
-import SquareItem from "./components/SquareItem";
-import { useAppData } from "./context/user-hooks";
+import RowItem from "./components/RowItem";
+import {useAppData} from "./context/user-hooks";
 
 
 function App() {
-    const [ option, setOption ] = useState('');
-    const [ field, setField ] = useState(0);
-    const [ level, setLevel ] = useState([]);
-    const { data, isDataLoading, setIsActiveSquare, rowId, colId } = useAppData();
 
+    const {
+        data,
+        isDataLoading,
+        rowId,
+        colId,
+        option,
+        field,
+        level,
+        setLevel,
+        handleChange,
+        handleSubmit
+    } = useAppData();
 
 
     useEffect(() => {
@@ -20,26 +28,15 @@ function App() {
         },
         [data]);
 
-    if(isDataLoading) return <div style={{textAlign: "center",marginTop: "50px",fontWeight: "600"}}>Loading...</div>
+    if (isDataLoading) return <div style={{textAlign: "center", marginTop: "50px", fontWeight: "600"}}>Loading...</div>
 
 
-    if(!data.length) return <div style={{textAlign: "center",marginTop: "50px",fontWeight: "600"}}>Sorry, there's no info</div>
-
-    const handleChange = (event) => {
-        setOption(event.target.value);
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        const selectOptions = document.getElementById("modeLevels");
-        let modeId = Number(selectOptions.options[selectOptions.selectedIndex].id);
-        setField(modeId);
-        setIsActiveSquare(false);
-    }
+    if (!data.length) return <div style={{textAlign: "center", marginTop: "50px", fontWeight: "600"}}>Sorry, there's no
+        info</div>
 
     return (
         <div className="App">
-            <Header />
+            <Header/>
             <form onSubmit={handleSubmit}>
                 <label>
                     <select id="modeLevels" value={option} onChange={handleChange}>
@@ -51,26 +48,16 @@ function App() {
                 <input type="submit" value="Start" className="init-btn"/>
             </form>
             <div className="wrapper">
-
                 <div className="squares-list">
-                    {
-                        [...Array(field).keys()].map((num) =>
-                        {
-                            let rowNumber = num+1;
-                            return(
-                                <div className="row-items" key={num} id={rowNumber}>
-                                    {
-                                        [...Array(field).keys()].map((num) =>
-                                            <SquareItem
-                                                key={num} id={rowNumber+"-"+(num+1)}
-                                            />
-                                        )
-                                    }
-                                </div>
-                            )
-                        }
-
+                    {field !== 0 ?
+                        [...Array(field).keys()].map((num) => {
+                                let rowNumber = num + 1;
+                            return (
+                                    <RowItem key={num} rowNumber={rowNumber}/>
+                                )
+                            }
                         )
+                        : ""
                     }
                 </div>
                 <div className="hovered-items-info-wrap">
@@ -82,6 +69,7 @@ function App() {
                 </div>
             </div>
         </div>
-  );
+    );
 }
+
 export default App;

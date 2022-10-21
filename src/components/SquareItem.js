@@ -12,7 +12,6 @@ function SquareItem ({ id }) {
             onMouseEnter={useCallback((e) => {
                 setIsActiveSquare(e.target.classList.toggle("active"));
                 const squareId = e.target.id.split("-");
-                console.log(squareId);
                 setRowdId(Number(squareId[0]));
                 setColdId(Number(squareId[1]));
             }, [isActiveSquare])}

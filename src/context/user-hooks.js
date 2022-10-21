@@ -12,6 +12,9 @@ export const AppProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [isDataLoading, setDataLoading] = useState(false);
     const [data, setData] = useState([]);
+    const [ option, setOption ] = useState('');
+    const [ field, setField ] = useState(0);
+    const [ level, setLevel ] = useState([]);
 
     useEffect(() => {
         setDataLoading(true);
@@ -27,12 +30,17 @@ export const AppProvider = ({ children }) => {
     }, []);
 
 
-        // const activeToggle = (e) => {
-        //     setIsActiveSquare(!isActiveSquare);
-        //     setColdId(Number(e.target.id) + 1);
-        //     setRowdId(Number(e.target.parentNode.id) + 1);
-        //     console.log(colId);
-        // }
+    const handleChange = (event) => {
+        setOption(event.target.value);
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const selectOptions = document.getElementById("modeLevels");
+        let modeId = Number(selectOptions.options[selectOptions.selectedIndex].id);
+        setField(modeId);
+        setIsActiveSquare(false);
+    }
 
   return (
     <AppContext.Provider
@@ -47,6 +55,14 @@ export const AppProvider = ({ children }) => {
           setDataLoading,
           error,
           data,
+          option,
+          setOption,
+          field,
+          setField,
+          level,
+          setLevel,
+          handleChange,
+          handleSubmit,
       }}
     >
       {children}
