@@ -1,13 +1,13 @@
 {
-  "main.css": "/square-app/static/css/main.9c627359.chunk.css",
-  "main.js": "/square-app/static/js/main.97c8f3d8.chunk.js",
-  "main.js.map": "/square-app/static/js/main.97c8f3d8.chunk.js.map",
+  "main.css": "/square-app/static/css/main.00584be2.chunk.css",
+  "main.js": "/square-app/static/js/main.3eac422e.chunk.js",
+  "main.js.map": "/square-app/static/js/main.3eac422e.chunk.js.map",
   "static/js/1.bfe22cd9.chunk.js": "/square-app/static/js/1.bfe22cd9.chunk.js",
   "static/js/1.bfe22cd9.chunk.js.map": "/square-app/static/js/1.bfe22cd9.chunk.js.map",
   "runtime~main.js": "/square-app/static/js/runtime~main.2d519aef.js",
   "runtime~main.js.map": "/square-app/static/js/runtime~main.2d519aef.js.map",
-  "static/css/main.9c627359.chunk.css.map": "/square-app/static/css/main.9c627359.chunk.css.map",
+  "static/css/main.00584be2.chunk.css.map": "/square-app/static/css/main.00584be2.chunk.css.map",
   "index.html": "/square-app/index.html",
-  "precache-manifest.cca148b1469802624789bc481f11b297.js": "/square-app/precache-manifest.cca148b1469802624789bc481f11b297.js",
+  "precache-manifest.6a3f0cde2f1accf7a0883ac1e34114b0.js": "/square-app/precache-manifest.6a3f0cde2f1accf7a0883ac1e34114b0.js",
   "service-worker.js": "/square-app/service-worker.js"
 }

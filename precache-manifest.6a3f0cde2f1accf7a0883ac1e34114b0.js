@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "97c8f3d866609530e4bf",
-    "url": "/square-app/static/css/main.9c627359.chunk.css"
+    "revision": "3eac422e3940401555f1",
+    "url": "/square-app/static/css/main.00584be2.chunk.css"
   },
   {
-    "revision": "97c8f3d866609530e4bf",
-    "url": "/square-app/static/js/main.97c8f3d8.chunk.js"
+    "revision": "3eac422e3940401555f1",
+    "url": "/square-app/static/js/main.3eac422e.chunk.js"
   },
   {
     "revision": "bfe22cd941e9e1de8b22",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/square-app/static/js/runtime~main.2d519aef.js"
   },
   {
-    "revision": "b02aad7eb39532e5c231769b6f5e024d",
+    "revision": "69be16a859c863ec7b4f53edf0ac3faf",
     "url": "/square-app/index.html"
   }
 ];
