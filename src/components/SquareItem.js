@@ -1,21 +1,38 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import './SquareItem.css';
 import { useAppData } from '../context/user-hooks';
 
 
-function SquareItem ({ id }) {
-    const { isActiveSquare, setIsActiveSquare, setColdId, setRowdId } = useAppData();
+function SquareItem ({ row, col }) {
+    const { activeSquares, setActiveSquares } = useAppData();
+
+    const isActive = () => {
+        return activeSquares.find(item => {
+            return item.id === row+"-"+col;
+            }
+        )
+    }
+
+    const handleClick = (e) => {
+        let squareClassList = [...e.target.classList];
+        const squareId = e.target.id;
+
+        let obj = {
+            id: squareId,
+            classlist: squareClassList,
+            row: row,
+            col: col
+        };
+        squareClassList.includes('active') ?
+            setActiveSquares(activeSquares.filter(item => item.id !== squareId)) :
+            setActiveSquares([...activeSquares, obj]);
+    }
 
 
     return(
         <div
-            onMouseEnter={useCallback((e) => {
-                setIsActiveSquare(e.target.classList.toggle("active"));
-                const squareId = e.target.id.split("-");
-                setRowdId(Number(squareId[0]));
-                setColdId(Number(squareId[1]));
-            }, [isActiveSquare])}
-            className="squares-list__item" id={id}>
+            className={`squares-list__item ${isActive() ? 'active' : ''}` } id={row+"-"+col}
+            onClick={handleClick}>
         </div>
     );
 }

@@ -4,6 +4,19 @@
     height: 40px;
     border: 1px solid #000;
 }
-.active{
+.active,
+.blue{
     background: blue;
+}
+.red {
+    background: red;
+}
+.yellow {
+    background: yellow;
+}
+.green {
+    background: green;
+}
+.grey {
+    background: grey;
 }

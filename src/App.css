@@ -29,7 +29,24 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px;
-  flex-direction: column-reverse;
+  flex-direction: column;
+}
+.colors-list{
+  width: 100%;
+  max-width: 250px;
+  margin: 20px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0;
+}
+.colors-list li{
+  list-style-type: none;
+  width: 40px;
+  height: 40px;
+  display: block;
+  cursor: pointer;
+  border-radius: 50%;
 }
 .squares-list{
   width: 100%;
@@ -39,6 +56,9 @@
 }
 .hovered-items-info-wrap{
   width: 100%;
+}
+.hovered-items-info-wrap h2{
+  margin: 0;
 }
 .hovered-items-info{
   display: flex;
@@ -50,7 +70,7 @@
   background: lightgreen;
   width: 50%;
   max-width: 210px;
-  margin: auto;
+  margin: 5px auto;
 }
 .hovered-items-info>span{
   margin-right: 20px;

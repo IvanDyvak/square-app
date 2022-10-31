@@ -6,15 +6,13 @@ const AppContext = createContext();
 export const useAppData = () => useContext(AppContext);
 
 export const AppProvider = ({ children }) => {
-    const [ isActiveSquare, setIsActiveSquare ] = useState(false);
-    const [rowId, setRowdId] = useState("");
-    const [colId, setColdId] = useState("");
-    const [error, setError] = useState(null);
-    const [isDataLoading, setDataLoading] = useState(false);
-    const [data, setData] = useState([]);
+    const [ error, setError ] = useState(null);
+    const [ isDataLoading, setDataLoading ] = useState(false);
+    const [ data, setData ] = useState([]);
     const [ option, setOption ] = useState('');
     const [ field, setField ] = useState(0);
     const [ level, setLevel ] = useState([]);
+    const [ activeSquares, setActiveSquares] = useState([]);
 
     useEffect(() => {
         setDataLoading(true);
@@ -30,6 +28,8 @@ export const AppProvider = ({ children }) => {
     }, []);
 
 
+    const colors = ["red", "yellow", "green", "grey", "blue"];
+
     const handleChange = (event) => {
         setOption(event.target.value);
     }
@@ -39,18 +39,15 @@ export const AppProvider = ({ children }) => {
         const selectOptions = document.getElementById("modeLevels");
         let modeId = Number(selectOptions.options[selectOptions.selectedIndex].id);
         setField(modeId);
-        setIsActiveSquare(false);
     }
+
+    // const getColor = (event) => {
+    //     return event.target.id;
+    // }
 
   return (
     <AppContext.Provider
       value={{
-          isActiveSquare,
-          setIsActiveSquare,
-          colId,
-          setColdId,
-          rowId,
-          setRowdId,
           isDataLoading,
           setDataLoading,
           error,
@@ -63,7 +60,11 @@ export const AppProvider = ({ children }) => {
           setLevel,
           handleChange,
           handleSubmit,
-      }}
+          colors,
+          activeSquares,
+          setActiveSquares,
+          // getColor,
+    }}
     >
       {children}
     </AppContext.Provider>
