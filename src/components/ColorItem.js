@@ -1,16 +1,20 @@
 import React from 'react';
-import './SquareItem.css';
+import './ColorItem.css';
 import { useAppData } from '../context/user-hooks';
 
 
 function ColorItem ({ backgroundColor, id }) {
-    const { getColor } = useAppData();
+    const { activeColor, setActiveColor } = useAppData();
 
+    const getColor = () => {
+        setActiveColor(id);
+    }
 
     return(
         <li style={{backgroundColor: backgroundColor}} id={id}
             onClick={getColor}
-        ></li>
+            className={`list-group-item ${activeColor === id ? 'active-color' : '' }`}>
+        </li>
     );
 }
 

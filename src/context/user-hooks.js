@@ -13,6 +13,7 @@ export const AppProvider = ({ children }) => {
     const [ field, setField ] = useState(0);
     const [ level, setLevel ] = useState([]);
     const [ activeSquares, setActiveSquares] = useState([]);
+    const [ activeColor , setActiveColor ] = useState("")
 
     useEffect(() => {
         setDataLoading(true);
@@ -41,10 +42,6 @@ export const AppProvider = ({ children }) => {
         setField(modeId);
     }
 
-    // const getColor = (event) => {
-    //     return event.target.id;
-    // }
-
   return (
     <AppContext.Provider
       value={{
@@ -63,7 +60,8 @@ export const AppProvider = ({ children }) => {
           colors,
           activeSquares,
           setActiveSquares,
-          // getColor,
+          activeColor,
+          setActiveColor,
     }}
     >
       {children}

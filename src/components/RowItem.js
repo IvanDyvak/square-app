@@ -10,7 +10,7 @@ function RowItem ({rowId}) {
     const buildSquares = (number) => {
         let squareArray = [];
         for(let col = 1; col <= number; col++){
-            squareArray.push(<SquareItem key={Math.random()} col={col} row={rowId}/>);
+            squareArray.push(<SquareItem key={Math.random()} col={col} row={rowId} />);
         }
         return squareArray;
     }

@@ -18,7 +18,6 @@ function App() {
         handleSubmit,
         colors,
         activeSquares,
-        getColor
     } = useAppData();
 
 
@@ -57,26 +56,25 @@ function App() {
                 <input type="submit" value="Start" className="init-btn"/>
             </form>
             <div className="wrapper">
-                        <ul className="colors-list">
-                            {colors.map((color, i) =>
-                                <ColorItem key={i} backgroundColor={color} id={color}></ColorItem>
-                            )}
-                        </ul>
-                        <div className="squares-list">
-                            {buildRows(field)}
-                        </div>
-                        <div className="hovered-items-info-wrap">
-                            <h2>Hovered squares</h2>
-                            {
-                                activeSquares.map(({row, col}) =>
-                                    <div className="hovered-items-info" key={Math.random()}>
-                                        <span>row {row}</span>
-                                        <span>col {col}</span>
-                                    </div>
-                                )
-                            }
-
-                        </div>
+                <ul className="colors-list">
+                    {colors.map((color, i) =>
+                        <ColorItem key={i} backgroundColor={color} id={color}></ColorItem>
+                    )}
+                </ul>
+                <div className="squares-list">
+                    {buildRows(field)}
+                </div>
+                <div className="hovered-items-info-wrap">
+                    <h2>Hovered squares</h2>
+                    {
+                        activeSquares.map(({row, col}) =>
+                            <div className="hovered-items-info" key={Math.random()}>
+                                <span>row: {row}</span>
+                                <span>col: {col}</span>
+                            </div>
+                        )
+                    }
+                </div>
             </div>
         </div>
     )

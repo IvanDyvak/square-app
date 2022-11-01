@@ -1,3 +1,13 @@
+
+.list-group-item{
+    list-style-type: none;
+    width: 40px;
+    height: 40px;
+    display: block;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
 .active-color{
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.18);
+    box-shadow: 0px 0px 11px 0px rgb(0 0 0 / 70%);
 }
