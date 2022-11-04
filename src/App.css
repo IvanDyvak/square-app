@@ -5,6 +5,10 @@
   box-sizing: border-box;
   text-align: center;
 }
+.App-logo{
+   max-width: 300px;
+   margin: 20px auto;
+ }
 .instruction{
   display: block;
   max-width: 250px;
@@ -13,10 +17,6 @@
 }
 li{
   list-style-type: none;
-}
-.App-logo{
-  max-width: 300px;
-  margin: 20px auto;
 }
 .init-btn{
   width: 80px;
@@ -42,7 +42,7 @@ li{
 }
 .colors-list{
   width: 100%;
-  max-width: 250px;
+  max-width: 300px;
   margin: 20px auto 0;
   display: flex;
   align-items: center;

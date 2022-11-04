@@ -29,7 +29,7 @@ export const AppProvider = ({ children }) => {
     }, []);
 
 
-    const colors = ["red", "yellow", "green", "grey", "blue"];
+    const colors = ["red", "yellow", "green", "grey", "blue", "black", "brown"];
 
     const handleChange = (event) => {
         setOption(event.target.value);
