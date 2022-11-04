@@ -4,6 +4,9 @@
     height: 40px;
     border: 1px solid #000;
 }
+/*.active{*/
+/*    background: transparent;*/
+/*}*/
 .active,
 .blue{
     background: blue;

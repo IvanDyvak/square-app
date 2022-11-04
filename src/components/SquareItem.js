@@ -4,20 +4,25 @@ import { useAppData } from '../context/user-hooks';
 
 
 function SquareItem ({ row, col }) {
-    const { activeSquares, setActiveSquares, activeColor, colors } = useAppData();
-
-    // const activeBg = () => {
-    //     return colors.find(item =>{
-    //         return item === activeColor;
-    //     })
-    // }
+    const { activeSquares, setActiveSquares, activeColor } = useAppData();
 
     const isActive = () => {
-        return activeSquares.find(item => {
-            return item.id === row+"-"+col;
+        return activeSquares.find(({id}) => {
+            return id === row+"-"+col;
             }
         )
     }
+
+    function color(item) {
+        if (item.id === row+"-"+col)
+            return true;
+    }
+    const checkBg = () => {
+        return activeSquares.filter(color).map((item) => {
+            return item.background;
+        })
+    }
+
 
     const handleClick = (e) => {
         let squareClassList = [...e.target.classList];
@@ -28,16 +33,17 @@ function SquareItem ({ row, col }) {
             classlist: squareClassList,
             row: row,
             col: col,
+            background: activeColor
         };
         squareClassList.includes('active') ?
-            setActiveSquares(activeSquares.filter(item => item.id !== squareId)) :
+            setActiveSquares(activeSquares.filter(({id}) => id !== squareId)) :
             setActiveSquares([...activeSquares, obj]);
     }
 
 
     return(
         <div
-            className={`squares-list__item ${isActive() ? `active ${activeColor}` : ''}` } id={row+"-"+col}
+            className={`squares-list__item ${isActive() ? `active ${checkBg()}` : ''}` } id={row+"-"+col}
             onClick={handleClick}>
         </div>
     );

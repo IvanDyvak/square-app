@@ -5,6 +5,15 @@
   box-sizing: border-box;
   text-align: center;
 }
+.instruction{
+  display: block;
+  max-width: 250px;
+  margin: 20px auto;
+  text-align: left;
+}
+li{
+  list-style-type: none;
+}
 .App-logo{
   max-width: 300px;
   margin: 20px auto;
