@@ -10,7 +10,7 @@ function Header() {
                 <li>Pick your mode</li>
                 <li>Press Start</li>
                 <li>Create your drawing</li>
-                <li>You can select color from the list</li>
+                <li>You can set a color from the list</li>
             </ul>
         </header>
     )
