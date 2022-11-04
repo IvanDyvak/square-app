@@ -29,3 +29,9 @@
 .brown {
     background: brown;
 }
+@media (max-width: 450px){
+    .squares-list__item {
+        width: 30px;
+        height: 30px;
+    }
+}
