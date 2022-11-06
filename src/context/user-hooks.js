@@ -14,10 +14,11 @@ export const AppProvider = ({ children }) => {
     const [ level, setLevel ] = useState([]);
     const [ activeSquares, setActiveSquares] = useState([]);
     const [ activeColor , setActiveColor ] = useState("")
+    const [ colors, setColors ] = useState([]);
 
     useEffect(() => {
         setDataLoading(true);
-        getData()
+        getData(`https://demo7919674.mockable.io`)
             .then(res => {
                 const { message, code } = res;
                 if (code !== '200' && message) throw Error(message);
@@ -28,8 +29,19 @@ export const AppProvider = ({ children }) => {
             .finally(() => setDataLoading(false));
     }, []);
 
+    useEffect(() => {
+        setDataLoading(true);
+        getData(`/colors.json`)
+            .then(res => {
+                const { message, code } = res;
+                if (code !== '200' && message) throw Error(message);
+                setError(null);
+                setColors(res);
+            })
+            .catch(setError)
+            .finally(() => setDataLoading(false));
+    }, []);
 
-    const colors = ["red", "yellow", "green", "grey", "blue", "black", "brown"];
 
     const handleChange = (event) => {
         setOption(event.target.value);
