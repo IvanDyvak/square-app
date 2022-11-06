@@ -31,7 +31,7 @@ export const AppProvider = ({ children }) => {
 
     useEffect(() => {
         setDataLoading(true);
-        getData(`/colors.json`)
+        getData(`colors.json`)
             .then(res => {
                 const { message, code } = res;
                 if (code !== '200' && message) throw Error(message);
