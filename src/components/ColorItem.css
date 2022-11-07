@@ -5,7 +5,7 @@
     height: 40px;
     display: block;
     cursor: pointer;
-    border-radius: 50%;
+    border-radius: 3px
 }
 
 .active-color{
