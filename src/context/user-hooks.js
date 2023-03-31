@@ -18,7 +18,7 @@ export const AppProvider = ({ children }) => {
 
     useEffect(() => {
         setDataLoading(true);
-        getData(`https://demo7919674.mockable.io`)
+        getData(`levels.json`)
             .then(res => {
                 const { message, code } = res;
                 if (code !== '200' && message) throw Error(message);
